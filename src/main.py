@@ -1,7 +1,6 @@
-import uvicorn
 from fastapi import FastAPI, Query
-from .ressources.languageDTO import Languages
 
+from .ressources.languageDTO import Languages
 from .infrastructure.database import ResumeDataBase
 from .repository import ResumeRepository
 from .application.ServiceApplicationResume import ServiceApplicationResume
@@ -15,6 +14,6 @@ serviceApplication: ServiceApplicationResume = ServiceApplicationResume(
 app = FastAPI()
 
 
-@app.get("/{language}")
-def getResume(language: Languages = Query(Languages, title="language", description="Select the language for the Resume")):
+@app.get("/{language}", description="Get the resume data based on the language.")
+def getResume(language: Languages = Query(Languages)):
     return serviceApplication.getResume(language)
