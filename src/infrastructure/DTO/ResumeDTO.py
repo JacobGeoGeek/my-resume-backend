@@ -14,3 +14,4 @@ class ResumeDTO(BaseModel):
     skills: SkillsDTO
     workingExperiences: List[WorkingExperienceDTO]
     events: List[EventDTO]
+    aboutMe: List[str]
