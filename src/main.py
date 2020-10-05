@@ -14,7 +14,7 @@ serviceApplication: ServiceApplicationResume = ServiceApplicationResume(
 app = FastAPI()
 
 
-@app.get("/"):
+@app.get("/")
 def welcome():
     return "Welcome to the Resume Api"
 
