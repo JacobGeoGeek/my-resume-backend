@@ -14,6 +14,11 @@ serviceApplication: ServiceApplicationResume = ServiceApplicationResume(
 app = FastAPI()
 
 
+@app.get("/"):
+def welcome():
+    return "Welcome to the Resume Api"
+
+
 @app.get("/{language}", description="Get the resume data based on the language.")
 def getResume(language: Languages = Query(Languages)):
     return serviceApplication.getResume(language)
