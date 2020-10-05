@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 from .ressources.languageDTO import Languages
 from .infrastructure.database import ResumeDataBase
@@ -12,6 +13,14 @@ serviceApplication: ServiceApplicationResume = ServiceApplicationResume(
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins="https://github.com/JacobGeoGeek/my-resume",
+    allow_credentials=True,
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
