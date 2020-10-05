@@ -4,6 +4,8 @@ from .setting.setting import Settings
 from pymongo import MongoClient
 from .DTO.ResumeDTO import ResumeDTO
 
+setting: Settings = Settings()
+
 
 class ResumeDataBase(InterfaceResumeRepository):
 
@@ -15,4 +17,4 @@ class ResumeDataBase(InterfaceResumeRepository):
         return ResumeDTO(**result.get(language))
 
     def _setUpMongoConnection(self) -> MongoClient:
-        return MongoClient(Settings().getDatabaseURL())
+        return MongoClient(setting.getDatabaseURL())
