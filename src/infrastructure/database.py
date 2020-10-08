@@ -13,8 +13,9 @@ class ResumeDataBase(InterfaceResumeRepository):
         self.mongoClient = self._setUpMongoConnection()
 
     def getResume(self, language: str):
-        result = self.mongoClient.MyResume.resume.find_one({}, {language: 1})
-        return ResumeDTO(**result.get(language))
+        result = self.mongoClient.MyResume.resume.find_one(
+            {}, {language: True, '_id': False})
+        return result[language]
 
     def _setUpMongoConnection(self) -> MongoClient:
         return MongoClient(setting.getDatabaseURL())
