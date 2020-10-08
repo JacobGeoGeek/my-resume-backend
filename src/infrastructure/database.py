@@ -2,7 +2,6 @@ from typing import Set
 from ..repository.ResumeRepository import InterfaceResumeRepository
 from .setting.setting import Settings
 from pymongo import MongoClient
-from .DTO.ResumeDTO import ResumeDTO
 
 setting: Settings = Settings()
 
